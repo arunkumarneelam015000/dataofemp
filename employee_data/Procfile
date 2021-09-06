@@ -1,0 +1,1 @@
+web: gunicorn emdata.wsgi:application --log-file -

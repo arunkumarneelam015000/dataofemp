@@ -1,0 +1,175 @@
+
+<!--BRANCHDATA-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>EMDATA</title>
+</head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}"/>
+<body>
+    
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">EMDATA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="Search">
+          </form>
+        </div>
+      </nav>
+
+     
+
+
+
+
+
+{% block body %}
+
+
+<br>
+<div class="button-group">
+
+  <!-- <a href="{% url 'display_customer' %}" class="btn-primary btn-md" role="button">Customers</a>
+  -->
+
+
+  <!--  IMPORTANT DO DELETE THIS  -->
+  <a href="{% url 'display_customer' %}" class="btn-primary btn-md" role="button">Customers</a>
+  
+
+  <a href="{% url 'aCustomer' %}" class="btn btn-warning btn-sm" role="button">+</a>
+
+
+  <a href="{% url 'display_branch_data' %}" class="btn-primary btn-md" role="button">Branch Data</a>
+  
+  <a href="{% url 'aBranchData' %}" class="btn-warning btn-sm" role="button">+</a>
+
+
+  <a href="{% url 'display_customer_home_address' %}" class="btn-primary btn-md" role="button">Customer Office Data</a>
+  
+  <a href="{% url 'aCustomerHomeAddress' %}" class="btn-warning btn-sm" role="button">+</a>
+
+</div>
+
+<br>
+
+<h4>Currently Viewing {{ header }}</h4>
+
+<table class="table table-hover">
+    <!--
+<thead>
+<tr>
+
+  <th>id</th>  
+  <th>Customer Name</th>  
+  <th>Father Name</th>  
+  <th>Customer Profile</th> 
+  <th>Loan Account No</th> 
+  <th></th>
+
+</tr>
+
+</thead>-->
+
+<thead>
+    <tr>
+    
+      <th>id</th>  
+      <th>{{ arun }}</th> 
+      <th>{{arunOne}}</th>  
+      <th>{{arunTwo}}</th> 
+      <th>{{arunThree}}</th> 
+      <th></th>
+    
+    </tr>
+    
+    </thead>
+
+   
+
+<tbody>
+
+
+
+    {% for item in items %}
+
+ <!--   <tr>
+
+        <td>{{ item.pk }}</td>
+        
+        <td>{{item.customer_name}}</td>
+        <td>{{item.father_name}}</td>
+        <td>{{item.customer_profile}}</td>
+        <td>{{item.loan_account_no}}</td>
+       
+        
+        
+        </tr> -->
+
+       <tr>
+
+          <td>{{ item.pk }}</td>
+          <td>{{item.zone_name}}</td>
+          <td>{{item.region_name}}</td>
+          <td>{{item.area_name}}</td>
+          <td>{{item.branch_code}}</td>
+         
+       <!--   <td>
+            <a href="{% url 'edit_customer' item.pk %}" class = "btn btn-warning btn-sm" role="button">Edit</a>
+  
+          </td> -->
+          <td>
+            <a href="{% url 'edit_branchdata' item.pk %}" class = "btn btn-warning btn-sm" role="button">Edit</a>
+
+            <a href="{% url 'del_branchdata' item.pk %}" class = "btn btn-danger btn-sm" role="button">X</a>
+  
+          </td>
+  
+  <!--
+          <td>
+            <a href="{% url 'edit_customerhomeaddress' item.pk %}" class = "btn btn-warning btn-sm" role="button">Edit</a>
+  
+          </td>  --->
+           </tr>
+
+    <!--    <tr>
+
+          <td>{{ items.pk }}</td>
+          <td>{{item.addressOne}}</td>
+          <td>{{item.addressTwo}}</td>
+          <td>{{item.pinCode}}</td>
+
+        </tr>
+      -->
+        
+
+    {% endfor %}
+
+
+
+
+ 
+
+</tbody>
+
+</table>
+
+{% endblock %}
+
